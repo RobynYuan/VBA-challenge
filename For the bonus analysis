@@ -1,0 +1,18 @@
+Cells(2, 15).Value = " Greatest % Increase"
+       Cells(3, 15).Value = "Greatest % Decrease"
+       Cells(4, 15).Value = " Greastest Total Volumn"
+       Cells(1, 16).Value = "Ticker"
+       Cells(1, 17).Value = "Value"
+       Cells(2, 17).Value = Application.WorksheetFunction.Max(Columns("K"))
+       Cells(3, 17).Value = Application.WorksheetFunction.Min(Columns("K"))
+     Cells(4, 17).Value = Application.WorksheetFunction.Max(Columns("L"))
+       
+       For r = 2 To summaryTableRow
+       If Cells(r, 11).Value = Application.WorksheetFunction.Min(Columns("K")) Then
+       Cells(3, 16).Value = Cells(r, 9).Value
+       ElseIf Cells(r, 11).Value = Application.WorksheetFunction.Max(Columns("K")) Then
+       Cells(2, 16).Value = Cells(r, 9).Value
+       ElseIf Cells(r, 12).Value = Application.WorksheetFunction.Max(Columns("L")) Then
+       Cells(4, 16).Value = Cells(r, 9).Value
+       End If
+       Next r
