@@ -17,18 +17,23 @@ For Each ws In ThisWorkbook.Worksheets
             summaryTableRow = 2
            Dim Rowcounter As Double
            Rowcounter = 1
- # For looping throught the table to intergrating the column witht the same ticker   
+ # For looping throught the table to intergrating the column with the same ticker   
              For i = 2 To LastRow
           If Cells(i + 1, 1).Value <> Cells(i, 1).Value Then
-           ' create summary table
+ # For creating the header of the summary table
+    Cells(1, 9) = "ticker"
+    Cells(1, 10) = " Yearly Change"
+    Cells(1, 11) = "percentage Change"
+    Cells(1, 12) = "Total Stock volumn"
+# Writing to summary table
             Ticker = Cells(i, 1).Value
-          ' Writing to summary table
+
             Range("I" & summaryTableRow).Value = Ticker
             Range("L" & summaryTableRow).Value = TotalStockvolumn
             Range("J" & summaryTableRow).Value = yearlychange
             Range("K" & summaryTableRow).Value = percentagechange
             Range("K" & summaryTableRow).NumberFormat = "0.01%"
-  # for conditioning formatting column J based on the value >0 or <0
+ # for conditioning formatting column J based on the value >0 or <0
              If Range("J" & summaryTableRow).Value > 0 Then
                  Range("J" & summaryTableRow).Interior.ColorIndex = 4
           Else
@@ -85,11 +90,6 @@ For Each ws In ThisWorkbook.Worksheets
 
 
     Next i
-# For creating the header of the summary table
-    Cells(1, 9) = "ticker"
-    Cells(1, 10) = " Yearly Change"
-    Cells(1, 11) = "percentage Change"
-    Cells(1, 12) = "Total Stock volumn"
 
     
     End If
